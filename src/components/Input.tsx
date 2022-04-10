@@ -4,7 +4,7 @@ export default function Input({ value, onChange }: { value: string, onChange: (n
 
     return (
         <div>
-            <input type="text" value={value} onChange={e => {
+            <input type="text" placeholder="اكتب الجملة ليتم تحليلها صرفياً" value={value} onChange={e => {
                 onChange(e.target.value)
             }} />
         </div>

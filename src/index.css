@@ -11,12 +11,65 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(149deg, #f7f7f7, #fbfbfb);
   min-height: 100vh;
+  background-color: rgba(0,0,0,.1);
 }
 
 .container {
-  width: 90%;
-  max-width: 1100px;
-  margin: 200px auto;
+  max-width: 50vw;
+  min-height: 50vh;
+  margin: auto;
+  background-color: rgba(255,255,255,.6);
+  border-radius: 1rem;
+  padding: 20px;
+  box-shadow: 0px 0px 8px rgb(0 0 0 / 40%)
+}
+h1{
+  text-align: center;
+  margin: 20px;
+  color: #e737e1;
+  text-decoration-line: underline;
+  text-decoration-color: #4237e7;
+  font-size: xxx-large;
+
+}
+
+input{
+  padding: 7px;
+    margin: 20px;
+    display: block;
+    width: 300px;
+    border: 1px solid #e737e1;
+    outline: none;
+    color: #4237e7;
+    border-radius: .5rem;
+}
+::placeholder{
+  color: #4337e7a9;
+}
+button{
+  padding: 6px 12px;
+    margin: 0 20px;
+    color: white;
+    background-color: #4237e7;
+    border-radius: 0.5rem;
+    border: 0px;
+}
+.grid{
+  display: grid;
+    grid-template-columns: repeat(4,1fr);
+    margin: 20px;
+}
+.gridLable{
+  color: #e737e1;
+    font-size: larger;
+    font-weight: bolder;
+    border-bottom: 1px solid #4237e7;
+    text-align: center;
+    padding: 4px; 
+}
+.gridItem{
+  text-align: center;
+    padding: 4px;
+    color: #4237e7;
 }
