@@ -12,64 +12,66 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
-  background-color: rgba(0,0,0,.1);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .container {
-  max-width: 50vw;
+  max-width: 70vw;
   min-height: 50vh;
   margin: auto;
-  background-color: rgba(255,255,255,.6);
+  background-color: rgba(255, 255, 255, 0.6);
   border-radius: 1rem;
-  padding: 20px;
-  box-shadow: 0px 0px 8px rgb(0 0 0 / 40%)
+  padding: 36px;
+  box-shadow: 0px 0px 8px rgb(0 0 0 / 40%);
 }
-h1{
+h1 {
   text-align: center;
   margin: 20px;
-  color: #e737e1;
+  color: #4237e7;
   text-decoration-line: underline;
   text-decoration-color: #4237e7;
   font-size: xxx-large;
-
 }
 
-input{
+input {
   padding: 7px;
-    margin: 20px;
-    display: block;
-    width: 300px;
-    border: 1px solid #e737e1;
-    outline: none;
-    color: #4237e7;
-    border-radius: .5rem;
+  margin: 20px 0;
+  display: block;
+  width: 70%;
+  font: inherit;
+  border: 1px solid #e737e1;
+  outline: none;
+  color: #4237e7;
+  border-radius: 0.5rem;
 }
-::placeholder{
+::placeholder {
   color: #4337e7a9;
 }
-button{
-  padding: 6px 12px;
-    margin: 0 20px;
-    color: white;
-    background-color: #4237e7;
-    border-radius: 0.5rem;
-    border: 0px;
+button {
+  font: inherit;
+  padding: 8px 16px;
+  font-size: 16px;
+
+  color: white;
+  background-color: #4237e7;
+  border-radius: 0.5rem;
+  border: 0px;
 }
-.grid{
+.grid {
   display: grid;
-    grid-template-columns: repeat(4,1fr);
-    margin: 20px;
+  grid-template-columns: repeat(6, 1fr);
+  margin: 20px 0;
 }
-.gridLable{
+.gridLable {
   color: #e737e1;
-    font-size: larger;
-    font-weight: bolder;
-    border-bottom: 1px solid #4237e7;
-    text-align: center;
-    padding: 4px; 
-}
-.gridItem{
+  font-size: larger;
+  font-weight: bolder;
+  border-bottom: 1px solid #4237e7;
   text-align: center;
-    padding: 4px;
-    color: #4237e7;
+  padding: 4px;
+}
+.gridItem {
+  text-align: center;
+  padding: 4px;
+  color: #4237e7;
 }

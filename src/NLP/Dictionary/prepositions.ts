@@ -10,6 +10,9 @@ const prepositions = {
     },
     "على": {
         "type": "preposition"
+    },
+    "في": {
+        "type": "preposition"
     }
 }
 

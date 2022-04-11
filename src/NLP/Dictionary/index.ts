@@ -18,7 +18,7 @@ class _Dictionary {
                 this.wordToRoot.set(derivative, root);
             }
         }
-        console.log(this.wordToRoot.get('يلعب'));
+        
     }
 
     getWord(_word: string) {

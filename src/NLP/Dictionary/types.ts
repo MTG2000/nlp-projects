@@ -5,8 +5,7 @@ export type Derivative =
     }
     | {
         type: "noun",
-        count?: 'single' | 'plural'
-        gender?: 'male' | 'female'
+        
     }
     | {
         type: "place"
