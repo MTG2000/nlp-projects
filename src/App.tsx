@@ -1,9 +1,8 @@
 import { useState } from "react";
 import "./App.css";
 import Input from "./components/Input";
-import { Dictionary, lexAnalyzer } from "./NLP";
+import { lexAnalyzer } from "./NLP";
 
-console.log(Dictionary.getWord("لاعبات"));
 
 function App() {
 
@@ -12,7 +11,7 @@ function App() {
 
   const proccessText = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const result = lexAnalyzer(input);
+    const result = lexAnalyzer(input)
     setResult(result);
   }
 
