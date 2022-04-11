@@ -6,7 +6,11 @@ import findVerb from "./findVerb";
 
 
 export function lexAnalyzer(sentence: string) {
+
+
+    // ------------------
     // Clean up sentence
+    // ------------------
     sentence = sentence.replaceAll(".", "")
     sentence = sentence.replaceAll("،", "")
 
@@ -26,6 +30,11 @@ export function lexAnalyzer(sentence: string) {
 
 
     const words = sentence.split(' ');
+
+    // ------------------
+    // Process Words
+    // ------------------
+
     return words.map(word => {
 
         if (isPreposition(word)) {
