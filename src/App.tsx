@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "./App.css";
 import Input from "./components/Input";
-import { Dictionary, lexAnalyzer } from "./NLP";
-import { tenseToArabic, typeToArabic } from "./NLP/utils";
+import { lexAnalyzer } from "./NLP";
+
 
 function App() {
   const [input, setInput] = useState("");
@@ -10,7 +10,7 @@ function App() {
 
   const proccessText = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const result = lexAnalyzer(input);
+    const result = lexAnalyzer(input)
     setResult(result);
   };
 
@@ -33,9 +33,9 @@ function App() {
             <>
               <p className="gridItem">{o.word}</p>
               <p className="gridItem">{o.root ? o.root : "__"}</p>
-              <p className="gridItem">{o.type ? typeToArabic(o.type) : "__"}</p>
+              <p className="gridItem">{o.type ? o.type : "__"}</p>
               <p className="gridItem">
-                {o.tense ? tenseToArabic(o.tense) : "__"}
+                {o.tense ? o.tense : "__"}
               </p>
               <p className="gridItem">
                 {o.type === "noun" ? (o.isPlural ? "جمع" : "مفرد") : "__"}
