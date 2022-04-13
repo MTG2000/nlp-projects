@@ -2,12 +2,13 @@
 const roots = [
     'لعب',
     "ذهب",
-    "اكل",
+    "أكل",
+    "طلب",
     "شرب"
 ]
 
 const rootsSet = new Set<string>(roots);
 
-export function findRoot(word: string) {
+export function findRootInDictionary(word: string) {
     return rootsSet.has(word) && word;;
 }

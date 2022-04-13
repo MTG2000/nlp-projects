@@ -59,19 +59,16 @@ button {
 }
 .grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 16px;
   margin: 20px 0;
 }
-.gridLable {
-  color: #e737e1;
-  font-size: larger;
-  font-weight: bolder;
-  border-bottom: 1px solid #4237e7;
+
+.word{
+  background-color: white;
+  padding: 16px;
+  border-radius: 16px;
+  box-shadow: 2px 4px 10px #ddd;
   text-align: center;
-  padding: 4px;
-}
-.gridItem {
-  text-align: center;
-  padding: 4px;
-  color: #4237e7;
+
 }

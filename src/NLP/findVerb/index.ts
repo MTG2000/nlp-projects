@@ -1,5 +1,5 @@
-import { findRoot } from "../Dictionary";
 import { getPossiblePrefixes } from "./prefixes";
+import { findRoot } from "./stem";
 import { getPossibleSuffixes } from "./suffixes";
 
 export default function findVerb(word: string) {
@@ -18,14 +18,19 @@ export default function findVerb(word: string) {
             const suffix = possibleSuffixes[j];
             const suffixWordLength = suffix.reduce((acc, letter) => acc + letter.value.length, 0)
 
-            const root = word.slice(prefixWordLength, word.length - suffixWordLength);
+            const stem = word.slice(prefixWordLength, word.length - suffixWordLength);
+            const res = findRoot(stem);
+            if (res) {
+                console.log(res);
 
-            if (findRoot(root))
                 results.push({
+                    type: 'verb' as const,
                     prefix,
                     suffix,
-                    root
+                    root: res.root,
+                    stem: res.stem
                 })
+            }
 
         }
     }

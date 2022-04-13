@@ -1,52 +1,33 @@
 
-// عطف و استفهام
+// أحرف الجر
 const prefixesStage1: Prefix[] = [
     {
         value: "ف",
         desc: 'فاء العطف'
     },
     {
-        value: "أ",
+        value: "ب",
     },
     {
-        value: "ل",
+        value: "لل",
     }
 ]
 
-// مستقبل
+// 
 const prefixesStage2: Prefix[] = [
     {
-        value: "س",
-        desc: 'سين الاستقبال'
+        value: "ال",
+        desc: 'ال التعريف'
     }
 ]
 
-// ضمير متصل
-const prefixesStage3: Prefix[] = [
-    {
-        value: "ي",
-        desc: 'ياء المضارعة'
-    },
-    {
-        value: "ت",
-        desc: 'تاء المضارعة'
-    },
-    {
-        value: "أ",
-        desc: 'ألف المضارعة'
-    },
-    {
-        value: "ن",
-        desc: 'نون المضارعة'
-    }
-]
 
 type Prefix = {
     value: string
     desc?: string
 }
 
-const stages = [prefixesStage1, prefixesStage2, prefixesStage3];
+const stages = [prefixesStage1, prefixesStage2];
 
 let allResults: Prefix[][] = [];
 let currentStack: Prefix[] = [];

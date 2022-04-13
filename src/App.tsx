@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import Input from "./components/Input";
+import Word from "./components/Word";
 import { lexAnalyzer } from "./NLP";
 
 
@@ -23,27 +24,8 @@ function App() {
           <button type="submit">تحليل صرفي</button>
         </form>
         <div className="grid">
-          <p className="gridLable">الكلمة</p>
-          <p className="gridLable">الجذر</p>
-          <p className="gridLable">النوع</p>
-          <p className="gridLable">الزمن</p>
-          <p className="gridLable">جمع</p>
-          <p className="gridLable">تأنيث</p>
-          {result.map((o) => (
-            <>
-              <p className="gridItem">{o.word}</p>
-              <p className="gridItem">{o.root ? o.root : "__"}</p>
-              <p className="gridItem">{o.type ? o.type : "__"}</p>
-              <p className="gridItem">
-                {o.tense ? o.tense : "__"}
-              </p>
-              <p className="gridItem">
-                {o.type === "noun" ? (o.isPlural ? "جمع" : "مفرد") : "__"}
-              </p>
-              <p className="gridItem">
-                {o.type === "noun" ? (o.isFemale ? "مؤنث" : "مذكر") : "__"}
-              </p>
-            </>
+          {result.map((word, idx) => (
+            <Word word={word} key={idx} />
           ))}
         </div>
       </div>

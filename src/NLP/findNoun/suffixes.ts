@@ -1,39 +1,35 @@
 
-// عطف و استفهام
+// 
 const suffixesStage1: Suffix[] = [
     {
-        value: "تْ",
-        desc: 'تاء التأنيث الساكنة'
+        value: "ات",
+        desc: "تاء جمع المؤنث السالم"
     },
     {
-        value: "ت",
-        desc: 'تاء الفاعل المتحركة'
+        value: "ة",
+        desc: 'تاء التأنيث'
+    },
+    {
+        value: "ون",
+        desc: 'واو الجمع'
+    },
+    {
+        value: "ين",
+        desc: 'ياء الجمع'
+    },
+    {
+        value: "ان",
+        desc: 'ألف التثنية '
+    },
+    {
+        value: "تان",
+        desc: 'ألف التثنية للمؤنث'
     }
 ]
 
 // مستقبل
 const suffixesStage2: Suffix[] = [
-    {
-        value: "ما",
-    },
-    {
-        value: "م",
-    },
-    {
-        value: "ن"
-    },
-    {
-        value: "وا"
-    },
-    {
-        value: "ون"
-    },
-    {
-        value: "ين"
-    },
-    {
-        value: "ان"
-    }
+
 ]
 
 type Suffix = {

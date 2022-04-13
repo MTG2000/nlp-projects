@@ -14,7 +14,7 @@ const prepositions = {
     "في": {
         "type": "preposition"
     }
-}
+} as const;
 
 export function isPreposition(word: string): word is keyof typeof prepositions {
     return word in prepositions;

@@ -1,5 +1,6 @@
 import conjunctions from "./Dictionary/conjs";
 import prepositions, { isPreposition } from "./Dictionary/prepositions";
+import findNoun from "./findNoun";
 import findVerb from "./findVerb";
 
 
@@ -15,18 +16,23 @@ export function lexAnalyzer(sentence: string) {
     sentence = sentence.replaceAll("،", "")
 
     for (const con in conjunctions) {
-        sentence = sentence.replaceAll(` ${con} `, ' ');
+        sentence = sentence.replaceAll(`${con} `, '');
     }
 
 
     for (const pre in prepositions) {
-        console.log(pre);
-
-        sentence = sentence.replaceAll(` ${pre} `, ' ');
-        console.log(sentence);
+        sentence = sentence.replaceAll(`${pre} `, '');
     }
     sentence = sentence.trim()
     sentence = sentence.replaceAll(/ +/g, " ")
+
+    sentence = sentence.replaceAll('آ', "أا");
+
+    while (sentence.indexOf('ّ') !== -1) {
+        const idx = sentence.indexOf('ّ');
+        sentence = sentence.substring(0, idx) + sentence[idx - 1] + sentence.substring(idx + 1);
+    }
+
 
 
     const words = sentence.split(' ');
@@ -40,14 +46,30 @@ export function lexAnalyzer(sentence: string) {
         if (isPreposition(word)) {
             return { word, ...prepositions[word] }
         }
-        const verb = findVerb(word);
+        const verbResults = findVerb(word);
 
-        let x = verb[0];
+        let x = verbResults[0];
 
-        if (verb.length > 0)
+        if (verbResults.length > 0)
             return { word, ...x };
 
-        return { word }
+
+        const nounResults = findNoun(word);
+
+        let y = nounResults[0];
+
+        if (nounResults.length > 0)
+            return { word, ...y };
+
+
+
+        return {
+            type: 'not found' as const,
+            word
+        }
     })
 
 }
+
+
+export type LexWordType = ReturnType<typeof lexAnalyzer>[number]
