@@ -1,5 +1,6 @@
 import { LexWordType } from "src/NLP"
-import { VerbProperties } from "src/NLP/findNoun/types";
+import { NounProperties } from "src/NLP/findNoun/types";
+import { VerbProperties } from "src/NLP/findVerb/types";
 import { toArabic } from "src/utils";
 
 
@@ -23,7 +24,7 @@ export default function Word({ word }: { word: LexWordType }) {
 
         return <div className="word">
             <p>{word.word}</p>
-            <p>{word.root}</p>
+            <p className="root">{word.root}</p>
             <p>{toArabic(wordProps.tense)}</p>
             <p>{toArabic(wordProps.count)}</p>
             <p>{toArabic(wordProps.geneder)}</p>
@@ -31,9 +32,26 @@ export default function Word({ word }: { word: LexWordType }) {
     }
 
     if (word.type === 'noun') {
+
+        let wordProps: NounProperties = {
+            geneder: 'male',
+            count: 'single'
+        };
+        for (const p of word.prefix) {
+            const { value, desc, ...other } = p;
+            wordProps = { ...wordProps, ...other }
+        }
+        for (const s of word.suffix) {
+            const { value, desc, ...other } = s;
+            wordProps = { ...wordProps, ...other }
+        }
+
         return <div className="word">
             <p>{word.word}</p>
-            <p>{word.root}</p>
+            <p className="root">{word.root}</p>
+            <p>{word.stem.type}</p>
+            <p>{toArabic(wordProps.count)}</p>
+            <p>{toArabic(wordProps.geneder)}</p>
         </div>
     }
 

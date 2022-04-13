@@ -26,14 +26,6 @@ export function lexAnalyzer(sentence: string) {
     sentence = sentence.trim()
     sentence = sentence.replaceAll(/ +/g, " ")
 
-    sentence = sentence.replaceAll('آ', "أا");
-
-    while (sentence.indexOf('ّ') !== -1) {
-        const idx = sentence.indexOf('ّ');
-        sentence = sentence.substring(0, idx) + sentence[idx - 1] + sentence.substring(idx + 1);
-    }
-
-
 
     const words = sentence.split(' ');
 
@@ -41,31 +33,43 @@ export function lexAnalyzer(sentence: string) {
     // Process Words
     // ------------------
 
-    return words.map(word => {
+    return words.map(_word => {
+
+        let word = _word;
+
+        // Preproccess word
+        // ----------------
+        while (word.indexOf('ّ') !== -1) {
+            const idx = word.indexOf('ّ');
+            word = word.substring(0, idx) + word[idx - 1] + word.substring(idx + 1);
+        }
+        word = word.replaceAll('آ', "أا");
+        // ----------------
+
 
         if (isPreposition(word)) {
-            return { word, ...prepositions[word] }
+            return { word: _word, ...prepositions[word] }
         }
+
+        // Check if word is Vern
         const verbResults = findVerb(word);
-
         let x = verbResults[0];
-
         if (verbResults.length > 0)
-            return { word, ...x };
+            return { word: _word, ...x };
 
 
+
+        // Check if word is Noun
         const nounResults = findNoun(word);
-
         let y = nounResults[0];
-
         if (nounResults.length > 0)
-            return { word, ...y };
+            return { word: _word, ...y };
 
 
 
         return {
             type: 'not found' as const,
-            word
+            word: _word
         }
     })
 

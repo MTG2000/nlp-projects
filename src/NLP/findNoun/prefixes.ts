@@ -1,3 +1,4 @@
+import { NounProperties } from "./types"
 
 // أحرف الجر
 const prefixesStage1: Prefix[] = [
@@ -25,7 +26,7 @@ const prefixesStage2: Prefix[] = [
 type Prefix = {
     value: string
     desc?: string
-}
+} & NounProperties
 
 const stages = [prefixesStage1, prefixesStage2];
 

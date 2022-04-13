@@ -6,7 +6,7 @@ import { lexAnalyzer } from "./NLP";
 
 
 function App() {
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState("فسيلعبن اللاعبون ، و يأكل المشروب و المطلوب طالبات ذاهبون آكل");
   const [result, setResult] = useState<any[]>([]);
 
   const proccessText = (e: React.FormEvent<HTMLFormElement>) => {

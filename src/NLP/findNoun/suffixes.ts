@@ -1,3 +1,4 @@
+import { NounProperties } from "./types"
 
 // 
 const suffixesStage1: Suffix[] = [
@@ -27,7 +28,7 @@ const suffixesStage1: Suffix[] = [
     }
 ]
 
-// مستقبل
+// --
 const suffixesStage2: Suffix[] = [
 
 ]
@@ -35,7 +36,7 @@ const suffixesStage2: Suffix[] = [
 type Suffix = {
     value: string
     desc?: string
-}
+} & NounProperties
 
 const stages = [suffixesStage2, suffixesStage1];
 

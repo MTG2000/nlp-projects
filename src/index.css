@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+:root {
+  --primary: #4237e7;
+  --secondary: #e737e1;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -27,9 +32,9 @@ body {
 h1 {
   text-align: center;
   margin: 20px;
-  color: #4237e7;
+  color: var(--primary);
   text-decoration-line: underline;
-  text-decoration-color: #4237e7;
+  text-decoration-color: var(--primary);
   font-size: xxx-large;
 }
 
@@ -39,9 +44,9 @@ input {
   display: block;
   width: 70%;
   font: inherit;
-  border: 1px solid #e737e1;
+  border: 1px solid var(--secondary);
   outline: none;
-  color: #4237e7;
+  color: var(--primary);
   border-radius: 0.5rem;
 }
 ::placeholder {
@@ -53,7 +58,7 @@ button {
   font-size: 16px;
 
   color: white;
-  background-color: #4237e7;
+  background-color: var(--primary);
   border-radius: 0.5rem;
   border: 0px;
 }
@@ -70,10 +75,16 @@ button {
   border-radius: 16px;
   box-shadow: 2px 4px 10px #ddd;
   text-align: center;
+  color: #333;
 }
 
 .word > p:first-child{
   margin-bottom: 12px;
   border-bottom: solid 1px;
   padding-bottom: 6px;
+  color: var(--primary);
+}
+
+.word > p.root{
+  color: var(--secondary);
 }

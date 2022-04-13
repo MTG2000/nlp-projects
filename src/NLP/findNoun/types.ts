@@ -1,6 +1,5 @@
 
-export type VerbProperties = Partial<{
+export type NounProperties = Partial<{
     count: 'single' | 'pair' | 'plural'
     geneder: 'male' | 'female'
-    tense: 'present' | 'past' | 'order' | 'future'
 }>

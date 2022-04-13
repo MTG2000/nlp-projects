@@ -2,13 +2,16 @@ import { findRootInDictionary } from "../Dictionary";
 
 const stems = [
     {
-        value: "فاعل"
+        value: "فاعل",
+        type: 'اسم فاعل'
     },
     {
-        value: "مفعول"
+        value: "مفعول",
+        type: 'اسم مفعول'
     },
     {
-        value: "فععال"
+        value: "فععال",
+        type: 'اسم فاعل'
     },
 ]
 
@@ -24,7 +27,6 @@ export function findRoot(word: string) {
                         for (const letter of 'فعل') {
                             rootWord += word[stem.value.indexOf(letter)]
                         }
-                        console.log(rootWord);
 
                         const root = findRootInDictionary(rootWord);
                         if (root)
