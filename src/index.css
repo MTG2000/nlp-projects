@@ -70,5 +70,10 @@ button {
   border-radius: 16px;
   box-shadow: 2px 4px 10px #ddd;
   text-align: center;
+}
 
+.word > p:first-child{
+  margin-bottom: 12px;
+  border-bottom: solid 1px;
+  padding-bottom: 6px;
 }

@@ -1,3 +1,4 @@
+import { VerbProperties } from "./types"
 
 // عطف و استفهام
 const suffixesStage1: Suffix[] = [
@@ -15,31 +16,40 @@ const suffixesStage1: Suffix[] = [
 const suffixesStage2: Suffix[] = [
     {
         value: "ما",
+        count: 'pair'
     },
     {
         value: "م",
+        count: 'plural'
     },
     {
-        value: "ن"
+        value: "ن",
+        count: 'plural',
+        geneder: 'female'
     },
     {
-        value: "وا"
+        value: "وا",
+        count: 'plural'
     },
     {
-        value: "ون"
+        value: "ون",
+        count: 'plural'
     },
     {
-        value: "ين"
+        value: "ين",
+        count: 'single',
+        geneder: 'female'
     },
     {
-        value: "ان"
+        value: "ان",
+        count: 'pair'
     }
 ]
 
 type Suffix = {
     value: string
     desc?: string
-}
+} & VerbProperties
 
 const stages = [suffixesStage2, suffixesStage1];
 

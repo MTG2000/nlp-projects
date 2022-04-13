@@ -21,7 +21,7 @@ export default function findNoun(word: string) {
             const stem = word.slice(prefixWordLength, word.length - suffixWordLength);
             const res = findRoot(stem);
 
-            if (res)
+            if (res) {
                 results.push({
                     type: 'noun' as const,
                     prefix,
@@ -29,6 +29,7 @@ export default function findNoun(word: string) {
                     root: res.root,
                     stem: res.stem
                 })
+            }
 
         }
     }

@@ -1,3 +1,4 @@
+import { VerbProperties } from "./types"
 
 // عطف و استفهام
 const prefixesStage1: Prefix[] = [
@@ -17,7 +18,8 @@ const prefixesStage1: Prefix[] = [
 const prefixesStage2: Prefix[] = [
     {
         value: "س",
-        desc: 'سين الاستقبال'
+        desc: 'سين الاستقبال',
+        tense: 'future'
     }
 ]
 
@@ -25,26 +27,31 @@ const prefixesStage2: Prefix[] = [
 const prefixesStage3: Prefix[] = [
     {
         value: "ي",
-        desc: 'ياء المضارعة'
+        desc: 'ياء المضارعة',
+        tense: 'present'
     },
     {
         value: "ت",
-        desc: 'تاء المضارعة'
+        desc: 'تاء المضارعة',
+        tense: 'present'
     },
     {
         value: "أ",
-        desc: 'ألف المضارعة'
+        desc: 'ألف المضارعة',
+        tense: 'present'
     },
     {
         value: "ن",
-        desc: 'نون المضارعة'
+        desc: 'نون المضارعة',
+        tense: 'present',
+        count: 'plural'
     }
 ]
 
 type Prefix = {
     value: string
     desc?: string
-}
+} & VerbProperties
 
 const stages = [prefixesStage1, prefixesStage2, prefixesStage3];
 
