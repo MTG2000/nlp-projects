@@ -4,7 +4,8 @@ const roots = [
     "ذهب",
     "أكل",
     "طلب",
-    "شرب"
+    "شرب",
+    "دحرج"
 ]
 
 const rootsSet = new Set<string>(roots);

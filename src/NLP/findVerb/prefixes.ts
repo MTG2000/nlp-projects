@@ -48,12 +48,19 @@ const prefixesStage3: Prefix[] = [
     }
 ]
 
+const prefixesStage4: Prefix[] = [
+    {
+        value: "ت",
+        desc: 'حرف زيادة',
+    }
+]
+
 type Prefix = {
     value: string
     desc?: string
 } & VerbProperties
 
-const stages = [prefixesStage1, prefixesStage2, prefixesStage3];
+const stages = [prefixesStage1, prefixesStage2, prefixesStage3, prefixesStage4];
 
 let allResults: Prefix[][] = [];
 let currentStack: Prefix[] = [];
