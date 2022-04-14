@@ -1,9 +1,16 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+@layer components {
+  .page-container {
+    @apply w-[85%] max-w-[1100px] mx-auto;
+  }
+
+  .btn{
+
+  }
+}
 :root {
   --primary: #4237e7;
   --secondary: #e737e1;
@@ -18,73 +25,4 @@ body {
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
   background-color: rgba(0, 0, 0, 0.1);
-}
-
-.container {
-  max-width: 70vw;
-  min-height: 50vh;
-  margin: auto;
-  background-color: rgba(255, 255, 255, 0.6);
-  border-radius: 1rem;
-  padding: 36px;
-  box-shadow: 0px 0px 8px rgb(0 0 0 / 40%);
-}
-h1 {
-  text-align: center;
-  margin: 20px;
-  color: var(--primary);
-  text-decoration-line: underline;
-  text-decoration-color: var(--primary);
-  font-size: xxx-large;
-}
-
-input {
-  padding: 7px;
-  margin: 20px 0;
-  display: block;
-  width: 70%;
-  font: inherit;
-  border: 1px solid var(--secondary);
-  outline: none;
-  color: var(--primary);
-  border-radius: 0.5rem;
-}
-::placeholder {
-  color: #4337e7a9;
-}
-button {
-  font: inherit;
-  padding: 8px 16px;
-  font-size: 16px;
-
-  color: white;
-  background-color: var(--primary);
-  border-radius: 0.5rem;
-  border: 0px;
-}
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 16px;
-  margin: 20px 0;
-}
-
-.word{
-  background-color: white;
-  padding: 16px;
-  border-radius: 16px;
-  box-shadow: 2px 4px 10px #ddd;
-  text-align: center;
-  color: #333;
-}
-
-.word > p:first-child{
-  margin-bottom: 12px;
-  border-bottom: solid 1px;
-  padding-bottom: 6px;
-  color: var(--primary);
-}
-
-.word > p.root{
-  color: var(--secondary);
 }

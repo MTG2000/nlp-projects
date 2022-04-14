@@ -6,6 +6,9 @@ import { toArabic } from "src/utils";
 
 export default function Word({ word }: { word: LexWordType }) {
 
+    let Content: JSX.Element = <></>;
+
+
     if (word.type === 'verb') {
 
         let wordProps: VerbProperties = {
@@ -22,13 +25,13 @@ export default function Word({ word }: { word: LexWordType }) {
             wordProps = { ...wordProps, ...other }
         }
 
-        return <div className="word">
-            <p>{word.word}</p>
-            <p className="root">{word.root}</p>
+        Content = <>
+            <p className="text-secondary-500 italic">{word.root}</p>
             <p>{toArabic(wordProps.tense)}</p>
             <p>{toArabic(wordProps.count)}</p>
             <p>{toArabic(wordProps.geneder)}</p>
-        </div>
+        </>
+
     }
 
     if (word.type === 'noun') {
@@ -46,22 +49,24 @@ export default function Word({ word }: { word: LexWordType }) {
             wordProps = { ...wordProps, ...other }
         }
 
-        return <div className="word">
-            <p>{word.word}</p>
-            <p className="root">{word.root}</p>
+        Content = <>
+            <p className="text-secondary-500 italic">{word.root}</p>
             <p>{word.stem.type}</p>
             <p>{toArabic(wordProps.count)}</p>
             <p>{toArabic(wordProps.geneder)}</p>
-        </div>
+        </>
+
     }
 
     if (word.type === 'preposition') {
-        return <div className="word">
-            <p>{word.word}</p>
+        Content = <>
             <p>حرف جر</p>
-        </div>
+        </>
     }
 
 
-    return <></>;
+    return <div className="bg-white p-16 rounded-16 shadow-md text-center text-gray-800">
+        <p className="mb-12 border-b pb-8 text-purple-600">{word.word}</p>
+        {Content}
+    </div>;
 }

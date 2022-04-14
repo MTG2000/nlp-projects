@@ -1,35 +1,23 @@
-import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Input from "./components/Input";
-import Word from "./components/Word";
-import { lexAnalyzer } from "./NLP";
+import Navbar from "./components/Navbar";
+import HomePage from "./pages/HomePage";
+import LexAnalyzerPage from "./pages/LexAnalyzerPage";
 
 
 function App() {
-  const [input, setInput] = useState("فسيلعبن اللاعبون ، و يأكل المشروب و المطلوب طالبات ذاهبون آكل متدحرج");
-  const [result, setResult] = useState<any[]>([]);
 
-  const proccessText = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const result = lexAnalyzer(input)
-    setResult(result);
-  };
 
   return (
-    <>
-      <h1>لغة الضاد</h1>
-      <div className="container" dir="rtl">
-        <form onSubmit={proccessText}>
-          <Input value={input} onChange={setInput} />
-          <button type="submit">تحليل صرفي</button>
-        </form>
-        <div className="grid">
-          {result.map((word, idx) => (
-            <Word word={word} key={idx} />
-          ))}
-        </div>
+    <div dir='rtl'>
+      <Navbar />
+      <div className="page-container py-48">
+        <Routes>
+          <Route index element={<HomePage />} />
+          <Route path='lex-analyzer' element={<LexAnalyzerPage />} />
+        </Routes>
       </div>
-    </>
+    </div>
   );
 }
 
