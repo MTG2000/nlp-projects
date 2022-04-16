@@ -4,27 +4,35 @@ import { NounProperties } from "./types"
 const suffixesStage1: Suffix[] = [
     {
         value: "ات",
-        desc: "تاء جمع المؤنث السالم"
+        desc: "تاء جمع المؤنث السالم",
+        geneder: 'female',
+        count: "plural"
     },
     {
         value: "ة",
-        desc: 'تاء التأنيث'
+        desc: 'تاء التأنيث',
+        geneder: 'female',
     },
     {
         value: "ون",
-        desc: 'واو الجمع'
+        desc: 'واو الجمع',
+        count: "plural"
     },
     {
         value: "ين",
-        desc: 'ياء الجمع'
+        desc: 'ياء الجمع',
+        count: "plural"
     },
     {
         value: "ان",
-        desc: 'ألف التثنية '
+        desc: 'ألف التثنية ',
+        count: "pair"
     },
     {
         value: "تان",
-        desc: 'ألف التثنية للمؤنث'
+        desc: 'ألف التثنية للمؤنث',
+        count: "pair",
+        geneder: 'female'
     }
 ]
 
