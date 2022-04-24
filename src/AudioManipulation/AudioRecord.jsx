@@ -6,6 +6,7 @@ const AudioRecord = () => {
   const [audioSrc, setAudioSrc] = useState("")
   const [regressionedWord, setRegressionedWord] = useState("")
   const [trianAudios,setTrianAudios] = useState([])
+  const [audioBlob, setAudioBlob] = useState("")
   
 
   const fetchAudio = (audios)=>{
@@ -31,9 +32,8 @@ const AudioRecord = () => {
  }
 
   const recordAudioHandler = async () => { 
-    let stream = await navigator.mediaDevices.getUserMedia({audio:true})
-    
-    let  mediaRecorder= new MediaRecorder(stream);
+    const stream = await navigator.mediaDevices.getUserMedia({audio:true})
+    const  mediaRecorder= new MediaRecorder(stream);
     let dataChunk = []
     mediaRecorder.start(); 
     setTimeout(()=>{
@@ -44,35 +44,41 @@ const AudioRecord = () => {
   );
   mediaRecorder.addEventListener("stop",
   ()=> {
-    const audioBlob = new Blob(dataChunk,{ type: 'audio/wav' });
-    const audioUrl = URL.createObjectURL(audioBlob);
-    setTrianAudios([...trianAudios,audioBlob])
+    const _audioBlob = new Blob(dataChunk,{ type: 'audio/wav' });
+    const audioUrl = URL.createObjectURL(_audioBlob);
+    setTrianAudios([...trianAudios,_audioBlob])
     setAudioSrc(audioUrl)
-    (async()=>{
-      const formData = new FormData()
-      formData.append("audio_data",audioBlob,"audio.wav")
-      formData.append("word","mem")
-      const response = await axios.post("http://127.0.0.1:5000/test",{
-        formData
-      });
-      console.log(response.data)
-    })();
+    setAudioBlob(_audioBlob)
+    
    
     
   }
   )
 }
+const fetchTestAudioHandler= async()=>{
+  const formData = new FormData()
+  formData.append("audio_data",audioBlob,"audio.wav")
+  formData.append("word","mem")
+  const response = await axios.post("http://127.0.0.1:5000/test",{
+    formData
+  });
+  console.log(response.data)
+}
   return (
     <>
-      <div>AudioRecord</div>
-      <button onClick={recordAudioHandler}>
-        record
-      </button>
-      <button onClick={trainAudioRecordedHandler}>train</button>
-      <a href={audioSrc} download={`${new Date().toString()}.wav`}> download audio</a>
-      <input type={"file"} accept="Audio/*" onChange={uploudAudioHandelr} multiple/>
-      <audio  src={audioSrc} controls></audio>
-      <input type="text" lang="" value={regressionedWord} onChange={(e)=>setRegressionedWord(e.target.value)}></input>
+      <div className="recordContainer">
+        <button onClick={recordAudioHandler}>
+          record
+        </button>
+        <a href={audioSrc} download={`${new Date().toString()}.wav`}> download audio</a>
+        <audio  src={audioSrc} controls></audio>
+        <button onClick={fetchTestAudioHandler}>trian</button>
+      </div>
+      <div className="trainContainer">
+        <input type="text" lang="" value={regressionedWord} onChange={(e)=>setRegressionedWord(e.target.value)}></input>
+        <button onClick={trainAudioRecordedHandler}>train</button>
+        <input type={"file"} accept="Audio/*" onChange={uploudAudioHandelr} multiple/>
+      </div>
     </>
   );
 };
