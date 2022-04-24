@@ -19,6 +19,7 @@
     "react-loading": "^2.0.3",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.0",
+    "recorder-js": "^1.0.7",
     "typescript": "^4.6.3",
     "web-vitals": "^2.1.4"
   },
@@ -49,6 +50,7 @@
     ]
   },
   "devDependencies": {
+    "@types/recorder-js": "^1.0.2",
     "autoprefixer": "^10.4.4",
     "cross-env": "^7.0.3",
     "gh-pages": "^3.2.3",
