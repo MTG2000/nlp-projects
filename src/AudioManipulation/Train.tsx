@@ -2,11 +2,11 @@ import React, { ChangeEvent, useState } from "react";
 import axios from "axios";
 import Input from "src/components/Input";
 import { AudioFile, Recorder } from "./helpers";
-import { url } from "inspector";
 
 export default function Train() {
   const [trianAudios, setTrianAudios] = useState<AudioFile[]>([]);
   const [trainWord, setTrainWord] = useState("");
+  const [isRecording, setIsRecording] = useState(false)
 
   const postTrainApi = async () => {
     const formData = new FormData();
@@ -20,38 +20,49 @@ export default function Train() {
   };
 
   const recordTrainingAudio = () => {
-    Recorder.startRecording();
+    Recorder().startRecording();
+    setIsRecording(true);
 
-    Recorder.record((audioFile) => {
+    Recorder().record((audioFile) => {
       setTrianAudios([...trianAudios, audioFile]);
+      setIsRecording(false);
     });
   };
   const uploadAudiosHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+
     const event = e.target.files!;
+    let files = [];
+    console.log(event.length);
+
     for (let i = 0; i < event.length; i++) {
-      setTrianAudios([
-        ...trianAudios,
-        {
-          name: event[i].name,
-          blob: event[i],
-          dataUrl: URL.createObjectURL(event[i]),
-        },
-      ]);
+      const file = event[i];
+      files.push({
+        name: file.name,
+        blob: file,
+        dataUrl: URL.createObjectURL(file),
+      })
     }
+    console.log(files);
+
+    setTrianAudios([
+      ...trianAudios,
+      ...files
+    ]);
   };
   return (
     <section>
       <h2 className="text-h3 text-gray-700">تدريب</h2>
       <div className="flex gap-12">
         <button
-          className="bg-primary-600 text-white py-8 px-16 rounded-8 mt-24"
+          disabled={isRecording}
+          className={`bg-primary-600 text-white py-8 px-16 rounded-8 mt-24 ${isRecording && 'opacity-50'}`}
           onClick={recordTrainingAudio}
         >
           تسجيل صوت جديد 🎤
         </button>
 
         <label htmlFor="uploadAudios">
-          <p className="bg-primary-600 text-white py-8 px-16 rounded-8 mt-24">
+          <p className="bg-primary-600 text-white py-8 px-16 rounded-8 mt-24 cursor-pointer">
             رفع ملف
           </p>
           <input
@@ -96,9 +107,8 @@ export default function Train() {
           onChange={setTrainWord}
         />
         <button
-          className={`bg-primary-600 text-white py-8 px-16 rounded-8 ${
-            trianAudios.length < 3 && "pointer-events-none opacity-60"
-          }`}
+          className={`bg-primary-600 text-white py-8 px-16 rounded-8 ${trianAudios.length < 3 && "pointer-events-none opacity-60"
+            }`}
           onClick={postTrainApi}
         >
           تدريب

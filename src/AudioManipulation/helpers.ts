@@ -20,9 +20,10 @@ class _Recorder {
             .catch((err) => console.log("Uh oh... unable to get stream...", err));
     }
 
+
     record(cb: (audio: AudioFile) => void) {
         this.startRecording();
-        setTimeout(() => this.stopRecording(cb), 1000)
+        setTimeout(() => this.stopRecording(cb), 1100)
     }
 
     startRecording() {
@@ -43,4 +44,8 @@ class _Recorder {
     }
 }
 
-export const Recorder = new _Recorder();
+let recorder: _Recorder;
+
+export const Recorder = () => {
+    return recorder = recorder ?? new _Recorder()
+} 

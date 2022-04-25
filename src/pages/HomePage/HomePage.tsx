@@ -7,8 +7,8 @@ const PAGES = [
         link: '/lex-analyzer'
     },
     {
-        text: "المحلل النحوي",
-        link: '#'
+        text: "التعرف على الصوت",
+        link: '/AM'
     },
     {
         text: "؟؟؟",
