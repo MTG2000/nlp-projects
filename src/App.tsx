@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
 import LexAnalyzerPage from "./pages/LexAnalyzerPage";
 import AudioRecord from "./AudioManipulation/AudioRecord";
+import AudioSynthesizer from "./pages/AudioSynthesizer/AudioSynthesizer";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="lex-analyzer" element={<LexAnalyzerPage />} />
           <Route path="AM" element={<AudioRecord />} />
+          <Route path="audio-synth" element={<AudioSynthesizer />} />
         </Routes>
       </div>
     </div>

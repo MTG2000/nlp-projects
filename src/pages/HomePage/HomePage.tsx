@@ -11,8 +11,8 @@ const PAGES = [
         link: '/AM'
     },
     {
-        text: "؟؟؟",
-        link: '#'
+        text: "التركيب الصوتي",
+        link: "/audio-synth"
     },
     {
         text: "؟؟؟",
