@@ -23,7 +23,7 @@ function say(word: string, onEnd: () => void) {
                 src: [
                     (process.env.REACT_APP_GITHUB ? "/nlp-projects" : "") +
                     `/assets/audios/audioSynth/${letter}.mp3`],
-                rate: 1.3
+                rate: 1
             });
 
             sound.on('end', playLetter)
@@ -47,18 +47,21 @@ export default function AudioSynthesizer() {
     return (
         <form
             onSubmit={handleSubmit}
-            className='bg-white p-32 rounded-12 shadow-md border'>
-            <Input
-                placeholder='أدخل كلمة ليتم لفظها'
-                value={wordInput}
-                onChange={setWordInput}
-            />
-            <button
-                disabled={isPlaying}
-                className={`bg-primary-600 text-white py-8 px-16 rounded-8 mt-16 ${isPlaying && 'opacity-60'}`}
-            >
-                تشغيل الصوت 🔉
-            </button>
+            className='bg-white overflow-hidden rounded-12 shadow-md border flex gap-16 mt-64'>
+            <div className='p-32 self-center grow'>
+                <Input
+                    placeholder='أدخل كلمة ليتم لفظها'
+                    value={wordInput}
+                    onChange={setWordInput}
+                />
+                <button
+                    disabled={isPlaying}
+                    className={`bg-primary-600 text-white py-8 px-16 rounded-8 mt-16 ${isPlaying && 'opacity-60'}`}
+                >
+                    تشغيل الصوت
+                </button>
+            </div>
+            <img src="assets/audio-bg.jpg" className='max-w-[350px] mr-auto' alt="" />
         </form>
     )
 }
